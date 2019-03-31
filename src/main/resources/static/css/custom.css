@@ -1,0 +1,70 @@
+html {
+    height: 100%;
+}
+body {
+    color: #202326;
+}
+
+.main-panel {
+    background-color: #fff !important;
+}
+
+.btn-icon {
+    background-color: #51cbce !important;
+}
+
+.btn:hover, .btn:focus, .btn:active, .btn.active, .btn:active:focus,
+.btn:active:hover, .btn.active:focus, .btn.active:hover, .show > .btn.dropdown-toggle,
+.show > .btn.dropdown-toggle:focus, .show > .btn.dropdown-toggle:hover,
+.navbar .navbar-nav > a.btn:hover, .navbar .navbar-nav > a.btn:focus,
+.navbar .navbar-nav > a.btn:active, .navbar .navbar-nav > a.btn.active,
+.navbar .navbar-nav > a.btn:active:focus, .navbar .navbar-nav > a.btn:active:hover,
+.navbar .navbar-nav > a.btn.active:focus, .navbar .navbar-nav > a.btn.active:hover,
+.show > .navbar .navbar-nav > a.btn.dropdown-toggle,
+.show > .navbar .navbar-nav > a.btn.dropdown-toggle:focus,
+.show > .navbar .navbar-nav > a.btn.dropdown-toggle:hover {
+    background-color: #34b5b8 !important;
+}
+
+.sidebar[data-active-color="warning"] .nav li.active > a,
+.sidebar[data-active-color="warning"] .nav li.active > a i,
+.sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"],
+.sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"] i,
+.sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"] ~ div > ul > li.active .sidebar-mini-icon,
+.sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"] ~ div > ul > li.active > a,
+.off-canvas-sidebar[data-active-color="warning"] .nav li.active > a,
+.off-canvas-sidebar[data-active-color="warning"] .nav li.active > a i,
+.off-canvas-sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"],
+.off-canvas-sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"] i,
+.off-canvas-sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"] ~ div > ul > li.active
+.sidebar-mini-icon, .off-canvas-sidebar[data-active-color="warning"] .nav li.active > a[data-toggle="collapse"] ~ div > ul > li.active > a {
+    color: #34b5b8 !important;
+}
+
+@media only screen and (max-width: 1440px) {
+    .full-page > .content {
+        padding-top: 2vh;
+    }
+
+    .login-page .card-login .input-group:last-child {
+        margin-bottom: 0px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .login-page .content .container {
+        margin-top: 2vh;
+    }
+
+    .footer {
+        padding: 4px 0;
+    }
+
+    .login-page .card-login .input-group:last-child {
+        margin-bottom: 0px;
+    }
+
+    .full-page > .content {
+        padding-top: 10vh;
+    }
+}

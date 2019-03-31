@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/login-fragment}">
+    <div class="container" layout:fragment="content">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <form class="form" method="post" th:action="@{/login}" autocomplete="off">
+                <div class="card card-login">
+                    <div class="card-header ">
+                        <div class="card-header ">
+                            <div class="logo">
+                                <img src="/images/logo.png">
+                            </div>
+                            <p class="text-justify mt-4">[[#{message.login.welcome}]]</p>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="nc-icon nc-single-02"></i>
+                          </span>
+                            </div>
+                            <input type="text"
+                                   class="form-control"
+                                   th:placeholder="#{label.login.username}"
+                                   name="username"
+                                   autocomplete="off"
+                                   required>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                          <span class="input-group-text">
+                            <i class="nc-icon nc-key-25"></i>
+                          </span>
+                            </div>
+                            <input type="password"
+                                   class="form-control"
+                                   th:placeholder="#{label.login.password}"
+                                   name="password"
+                                   autocomplete="off"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-block mb-3">[[#{label.login.button}]]</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</html>
