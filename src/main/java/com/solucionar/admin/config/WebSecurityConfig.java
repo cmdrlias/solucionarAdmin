@@ -68,7 +68,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                                "/fonts/**",
                                                "/vendor/**",
                                                "/public/**",
-                                               "/demo/**");
+                                               "/demo/**",
+                                               "/Icon-font-7/**");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {

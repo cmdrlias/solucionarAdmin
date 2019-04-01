@@ -6,7 +6,7 @@ body {
 }
 
 .main-panel {
-    background-color: #fff !important;
+    background-color: #EAF7F7 !important;
 }
 
 .btn-icon {
@@ -67,4 +67,24 @@ body {
     .full-page > .content {
         padding-top: 10vh;
     }
+}
+
+@media screen and (min-width: 992px) {
+    .sidebar .sidebar-wrapper li.active > a:not([data-toggle="collapse"]):after, .sidebar .sidebar-wrapper li.active > [data-toggle="collapse"] + div .nav li:after {
+        border-right: 17px solid #EAF7F7;
+    }
+}
+
+.navbar.navbar-transparent {
+    background-color: #fff !important;
+}
+
+.floating-add {
+    position: fixed !important;
+    bottom: 6%;
+    right: 3%;
+}
+
+.btn-secondary, .navbar .navbar-nav > a.btn {
+    background-color: #636363;
 }

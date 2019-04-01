@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class LoginController extends BaseController {
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @RequestMapping(value = { "/" })
     public String index(HttpServletRequest request, Model model) {
         return login(request, model);

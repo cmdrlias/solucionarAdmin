@@ -19,7 +19,9 @@ public class MvcConfig implements WebMvcConfigurer {
     public MessageSource messageSource() {
         final ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasenames("classpath:/messages/messages",
-                                   "classpath:/messages/login-messages");
+                                   "classpath:/messages/login-messages",
+                                   "classpath:/messages/dashboard-messages",
+                                   "classpath:/messages/user-messages");
         messageSource.setFallbackToSystemLocale(false);
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setCacheSeconds(5);

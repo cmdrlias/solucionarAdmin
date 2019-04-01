@@ -2,6 +2,168 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{fragments/principal-fragment}">
-<div class="content" layout:fragment="content">
-</div>
+    <div class="content" layout:fragment="content">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="pe-7s-users text-info"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">[[#{message.dashboard.active.users}]]</p>
+                                    <p class="card-title">2<p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-users"></i> [[#{message.dashboard.total}]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="pe-7s-light text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">[[#{message.dashboard.active.clients}]]</p>
+                                    <p class="card-title">0<p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-building"></i> [[#{message.dashboard.total}]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="pe-7s-alarm text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">[[#{message.dashboard.next.on.calendar}]]</p>
+                                    <p class="card-title">00/mês<p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-calendar-o"></i> [[#{message.dashboard.nearest.date}]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="pe-7s-wallet text-success"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category">[[#{message.dashboard.done}]]</p>
+                                    <p class="card-title">0<p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-check-circle"></i> [[#{message.dashboard.total.month}]]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl col-lg">
+                <div class="card">
+                    <div class="card-header ">
+                        <h4 class="card-title">[[#{message.dashboard.news}]] <i class="pe-7s-news-paper float-right"></i></h4>
+                    </div>
+                    <form th:action="@{/dashboard/save-comment}" method="post">
+                        <div class="card-body">
+                            <div class="row" th:each="n, iterStat : ${news}" th:if="${iterStat.index} < 3">
+                                <div class="col-sm">
+                                    <blockquote>
+                                        <p>[[${n.nwsDescription}]]</p>
+                                        <small>[[${n.getUser().getPerson().perName}]] - [[#{message.dashboard.news.created.at}]] [[${#calendars.format(n.nwsCreatedAt, 'HH:mm, dd/MM/YYYY')}]]</small>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="row" id="newsForm" style="display:none">
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <textarea class="form-control" type="text" name="description"
+                                               placeholder="Digite aqui sua novidade..." rows="2" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" id="btnsForm" style="display:none">
+                            <button type="submit" class="btn btn-primary float-right mb-3 ml-1" id="btnEnviar"><i class="nc-icon nc-send"></i></button>
+                            <button class="btn btn-secondary float-right mb-3 ml-1" id="btnCancelar"><i class="nc-icon nc-simple-remove"></i></button>
+                        </div>
+                    </form>
+                    <div class="card-footer" id="btnNoForm" style="display:block">
+                        <button class="btn btn-primary float-right mb-1 ml-1" id="btnNovo">Novo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl col-lg">
+                <div class="card">
+                    <div class="card-header ">
+                        <h4 class="card-title">[[#{message.dashboard.stats}]] <i class="pe-7s-graph3 float-right"></i></h4>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script layout:fragment="javascript">
+    $(document).ready(function() {
+        $('#btnNovo').click(function() {
+            $('#btnsForm').show();
+            $('#btnNoForm').hide();
+            $('#newsForm').show();
+        });
+        $('#btnCancelar').click(function() {
+            $('#btnsForm').hide();
+            $('#btnNoForm').show();
+            $('#newsForm').hide();
+        });
+    });
+</script>
 </html>

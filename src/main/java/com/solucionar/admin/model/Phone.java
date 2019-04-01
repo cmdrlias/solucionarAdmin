@@ -1,5 +1,6 @@
 package com.solucionar.admin.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -57,5 +58,9 @@ public class Phone implements Serializable {
 
     public void setPhoneType(PhoneType phoneType) {
         this.phoneType = phoneType;
+    }
+
+    public String getPhoneString() {
+        return "(" + phoAreaCode + ")" + " " + phoNumber;
     }
 }

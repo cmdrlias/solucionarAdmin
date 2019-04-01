@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/principal-fragment}">
+    <div class="content" layout:fragment="content">
+        <div class="col-xl">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">[[#{message.users.add}]] <i class="pe-7s-add-user float-right mr-1"></i></h4>
+                </div>
+                <form id="form1" th:action="@{/users/save}" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.users.name}]] *</label>
+                                    <input class="form-control" type="text" name="name" required />
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.users.username}]] *</label>
+                                    <input class="form-control" type="text" name="username" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.users.email}]]</label>
+                                    <input class="form-control" type="email" name="email" />
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.users.cpf}]] *</label>
+                                    <input class="form-control" type="text" name="cpf" required />
+                                </div>
+                            </div>
+                            <div class="col-sm" id="userType">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.users.type}]]</label>
+                                    <select class="form-control" name="type" required>
+                                        <option th:text="#{label.option.select}" selected></option>
+                                        <option th:text="#{system.role.system.admin}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.phone.1.area.code}]] *</label>
+                                    <input class="form-control" type="text" name="area1" number="true" maxlength="2" required/>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.phone.1.number}]] *</label>
+                                    <input class="form-control" type="text" name="phone1" number="true"  maxlength="8" required/>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.phone.2.area.code}]]</label>
+                                    <input class="form-control" type="text" name="area2" number="true" maxlength="2"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.phone.2.number}]]</label>
+                                    <input class="form-control" type="text" name="phone2" number="true"  maxlength="9" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.zip.code}]] *</label>
+                                    <input class="form-control" type="text" name="zipCode" id="zipCode" number="true" maxlength="8" required />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.street}]] *</label>
+                                    <input class="form-control" type="text" name="street" id="street" required/>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.neighborhood}]] *</label>
+                                    <input class="form-control" type="text" name="neighborhood" id="neighborhood" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.number}]] *</label>
+                                    <input class="form-control" type="text" name="number" id="number" required/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.complement}]]</label>
+                                    <input class="form-control" type="text" name="complement" id="complement" />
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.city}]] *</label>
+                                    <input class="form-control" type="text" name="city" id="city" required/>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.address.state}]] *</label>
+                                    <input class="form-control" type="text" name="state" id="state" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary float-right mb-4 ml-4">Salvar</button>
+                        <a th:href="@{/users/list}" class="btn btn-secondary float-right mb-4">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script layout:fragment="javascript">
+        $(document).ready(function() {
+            setFormValidation('#form1');
+            addZipCodeLoadingService();
+        });
+    </script>
+</html>

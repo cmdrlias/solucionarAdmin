@@ -54,6 +54,10 @@ create table person_address(
     FOREIGN KEY (add_code) REFERENCES address(add_code)
 );
 
+# TODO
+# fix user type and person by creating a connecting table (not using foreign keys)
+# use person_address and person_phone as examples
+
 create table user (
   usr_code             INT NOT NULL AUTO_INCREMENT,
   usr_name             VARCHAR(100) NOT NULL,
@@ -70,5 +74,16 @@ INSERT INTO user_type (ust_description) VALUES ("Administrador");
 INSERT INTO address (add_street, add_number, add_neighborhood, add_city, add_state, add_country, add_zip_code)
             VALUES ("Boa Vista", "108", "Camelos", "Santa Luzia", "Minas Gerais", "Brasil", "33010-470");
 INSERT INTO person (per_name, per_cpf) VALUES ("Larissa Silva", "131.529.596-21");
+INSERT INTO person (per_name, per_cpf) VALUES ("Vanessa Aparecida Abreu e Silva Melo", "111.111.111-11");
 INSERT INTO person_address (per_code, add_code) VALUES (1, 1);
-INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)  VALUES ("cmdrlias", "cmdrlias@gmail.com", "$2a$10$2XmoryKEpL8jrfy2anY4Wun.TseVwq8Dnxf/.xb5sUen5gFv0nJrO", 1, 1);
+INSERT INTO person_address (per_code, add_code) VALUES (2, 1);
+INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)
+          VALUES ("cmdrlias", "cmdrlias@gmail.com", "$2a$10$2XmoryKEpL8jrfy2anY4Wun.TseVwq8Dnxf/.xb5sUen5gFv0nJrO", 1, 1);
+INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)
+          VALUES ("vanessa", "vanessasilvamelo@hotmail.com", "$2a$10$ih/YGdjBNtlEkGcivO4y8ewg72mhk1SH6zWu9K4cERSSBAgAamOLi", 1, 2);
+INSERT INTO phone_type (pht_description) VALUES ("Casa");
+INSERT INTO phone_type (pht_description) VALUES ("Celular");
+INSERT INTO phone (pht_code, pho_number, pho_area_code) VALUES (2, 992498172, 31);
+INSERT INTO phone (pht_code, pho_number, pho_area_code) VALUES (1, 33333333, 31);
+INSERT INTO person_phone (per_code, pho_code) VALUES (1, 1);
+INSERT INTO person_phone (per_code, pho_code) VALUES (2, 2);

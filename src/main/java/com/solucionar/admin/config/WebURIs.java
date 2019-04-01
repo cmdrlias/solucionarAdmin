@@ -14,21 +14,10 @@ public interface WebURIs {
     };
 
     public static final String[] PRIVATE_URI_SYSTEM_ADMIN = {
-            "/lawfirm/list",
-            "/lawfirm/add",
-            "/lawfirm/save",
-            "/lawfirm/edit",
-            "/lawfirm/update",
-            "/lawfirm/delete",
-            "/lawfirm/block",
-            "/lawfirm/unblock",
+            "/dashboard/save-comment",
+            "/users",
             "/users/list",
             "/users/add",
             "/users/save",
-            "/users/edit",
-            "/users/update",
-            "/users/delete",
-            "/users/block",
-            "/users/unblock"
     };
 }
