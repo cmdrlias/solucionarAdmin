@@ -24,10 +24,6 @@ public class Phone implements Serializable {
     @Column(name="pho_number")
     private int phoNumber;
 
-    @OneToOne
-    @JoinColumn(name="pht_code")
-    private PhoneType phoneType;
-
     public int getPhoCode() {
         return phoCode;
     }
@@ -50,14 +46,6 @@ public class Phone implements Serializable {
 
     public void setPhoNumber(int phoNumber) {
         this.phoNumber = phoNumber;
-    }
-
-    public PhoneType getPhoneType() {
-        return phoneType;
-    }
-
-    public void setPhoneType(PhoneType phoneType) {
-        this.phoneType = phoneType;
     }
 
     public String getPhoneString() {

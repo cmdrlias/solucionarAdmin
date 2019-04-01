@@ -31,7 +31,9 @@ public class User implements Serializable {
     private UserType usrType;
 
     @OneToOne
-    @JoinColumn(name="per_code")
+    @JoinTable(name="person_user",
+            joinColumns={@JoinColumn(name="per_code")},
+            inverseJoinColumns={@JoinColumn(name="usr_code")})
     private Person person;
 
     public User() { }

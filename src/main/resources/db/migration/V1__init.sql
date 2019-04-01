@@ -17,20 +17,11 @@ create table address(
     PRIMARY KEY (add_code)
 );
 
-create table phone_type(
-   pht_code			      INT NOT NULL AUTO_INCREMENT,
-   pht_description		VARCHAR(40) NOT NULL,
-   PRIMARY KEY(pht_code)
-);
-
 create table phone(
   pho_code			      INT NOT NULL AUTO_INCREMENT,
-  pht_code			      INT NOT NULL,
-  pho_number			    INT NOT NULL,
-  pho_area_code		    SMALLINT NOT NULL,
-  PRIMARY KEY(pho_code),
-  FOREIGN KEY(pht_code) REFERENCES phone_type(pht_code)
-
+  pho_number			  INT,
+  pho_area_code		      SMALLINT,
+  PRIMARY KEY(pho_code)
 );
 
 create table person(
@@ -66,8 +57,21 @@ create table user (
   ust_code             INT NOT NULL,
   per_code				     INT NOT NULL,
   PRIMARY KEY (usr_code),
-  FOREIGN KEY (ust_code) REFERENCES user_type(ust_code),
   FOREIGN KEY (per_code) REFERENCES person(per_code)
+);
+
+create table set_user_type (
+    usr_code          INT NOT NULL,
+    ust_code          INT NOT NULL,
+    FOREIGN KEY (usr_code) REFERENCES user(usr_code),
+    FOREIGN KEY (ust_code) REFERENCES user_type(ust_code)
+);
+
+create table person_user(
+    usr_code         INT NOT NULL,
+    per_code         INT NOT NULL,
+    FOREIGN KEY (usr_code) REFERENCES user(usr_code),
+    FOREIGN KEY (per_code) REFERENCES person(per_code)
 );
 
 INSERT INTO user_type (ust_description) VALUES ("Administrador");
@@ -81,9 +85,11 @@ INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)
           VALUES ("cmdrlias", "cmdrlias@gmail.com", "$2a$10$2XmoryKEpL8jrfy2anY4Wun.TseVwq8Dnxf/.xb5sUen5gFv0nJrO", 1, 1);
 INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)
           VALUES ("vanessa", "vanessasilvamelo@hotmail.com", "$2a$10$ih/YGdjBNtlEkGcivO4y8ewg72mhk1SH6zWu9K4cERSSBAgAamOLi", 1, 2);
-INSERT INTO phone_type (pht_description) VALUES ("Casa");
-INSERT INTO phone_type (pht_description) VALUES ("Celular");
-INSERT INTO phone (pht_code, pho_number, pho_area_code) VALUES (2, 992498172, 31);
-INSERT INTO phone (pht_code, pho_number, pho_area_code) VALUES (1, 33333333, 31);
+INSERT INTO phone (pho_number, pho_area_code) VALUES (992498172, 31);
+INSERT INTO phone (pho_number, pho_area_code) VALUES (33333333, 31);
 INSERT INTO person_phone (per_code, pho_code) VALUES (1, 1);
 INSERT INTO person_phone (per_code, pho_code) VALUES (2, 2);
+INSERT INTO person_user (usr_code, per_code) VALUES (1, 1);
+INSERT INTO person_user (usr_code, per_code) VALUES (2, 2);
+INSERT INTO set_user_type (usr_code, ust_code) VALUES (1, 1);
+INSERT INTO set_user_type (usr_code, ust_code) VALUES (2, 1);
