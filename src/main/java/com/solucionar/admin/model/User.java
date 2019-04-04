@@ -30,10 +30,10 @@ public class User implements Serializable {
     @JoinColumn(name="ust_code")
     private UserType usrType;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name="person_user",
-            joinColumns={@JoinColumn(name="per_code")},
-            inverseJoinColumns={@JoinColumn(name="usr_code")})
+            joinColumns={@JoinColumn(name="usr_code")},
+            inverseJoinColumns={@JoinColumn(name="per_code")})
     private Person person;
 
     public User() { }

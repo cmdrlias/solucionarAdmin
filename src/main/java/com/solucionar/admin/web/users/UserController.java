@@ -92,8 +92,6 @@ public class UserController extends BaseController {
         address.setAddState(addState);
         address.setAddZipCode(addZipCode);
 
-        person.setAddress(address);
-
         List<Phone> phones = new ArrayList<>();
 
         if (StringUtils.isNotBlank(phoNumber1)) {
@@ -108,7 +106,10 @@ public class UserController extends BaseController {
             phones.add(phone2);
         }
 
+        person.setAddress(address);
+
         person.setPhones(phones);
+
         user.setPerson(person);
 
         String usrPassword = RandomStringUtils.randomAlphanumeric(10);

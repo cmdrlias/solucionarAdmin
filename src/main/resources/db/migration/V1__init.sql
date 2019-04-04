@@ -18,8 +18,8 @@ create table address(
 );
 
 create table phone(
-  pho_code			      INT NOT NULL AUTO_INCREMENT,
-  pho_number			  INT,
+  pho_code			        INT NOT NULL AUTO_INCREMENT,
+  pho_number			      INT,
   pho_area_code		      SMALLINT,
   PRIMARY KEY(pho_code)
 );
@@ -34,6 +34,7 @@ create table person(
 create table person_phone(
    per_code			      INT NOT NULL,
    pho_code			      INT NOT NULL,
+   PRIMARY KEY (per_code, pho_code),
    FOREIGN KEY (per_code) REFERENCES person(per_code),
    FOREIGN KEY (pho_code) REFERENCES phone(pho_code)
 );
@@ -41,6 +42,7 @@ create table person_phone(
 create table person_address(
     per_code          INT NOT NULL,
     add_code          INT NOT NULL,
+    PRIMARY KEY (per_code, add_code),
     FOREIGN KEY (per_code) REFERENCES person(per_code),
     FOREIGN KEY (add_code) REFERENCES address(add_code)
 );
@@ -55,14 +57,13 @@ create table user (
   usr_email            VARCHAR(100) NOT NULL,
   usr_password         VARCHAR(264) NOT NULL,
   ust_code             INT NOT NULL,
-  per_code				     INT NOT NULL,
-  PRIMARY KEY (usr_code),
-  FOREIGN KEY (per_code) REFERENCES person(per_code)
+  PRIMARY KEY (usr_code)
 );
 
 create table set_user_type (
     usr_code          INT NOT NULL,
     ust_code          INT NOT NULL,
+    PRIMARY KEY (usr_code, ust_code),
     FOREIGN KEY (usr_code) REFERENCES user(usr_code),
     FOREIGN KEY (ust_code) REFERENCES user_type(ust_code)
 );
@@ -70,10 +71,12 @@ create table set_user_type (
 create table person_user(
     usr_code         INT NOT NULL,
     per_code         INT NOT NULL,
+    PRIMARY KEY (usr_code, per_code),
     FOREIGN KEY (usr_code) REFERENCES user(usr_code),
     FOREIGN KEY (per_code) REFERENCES person(per_code)
 );
 
+ALTER TABLE person ALTER per_code SET DEFAULT 0;
 INSERT INTO user_type (ust_description) VALUES ("Administrador");
 INSERT INTO address (add_street, add_number, add_neighborhood, add_city, add_state, add_country, add_zip_code)
             VALUES ("Boa Vista", "108", "Camelos", "Santa Luzia", "Minas Gerais", "Brasil", "33010-470");
@@ -81,10 +84,10 @@ INSERT INTO person (per_name, per_cpf) VALUES ("Larissa Silva", "131.529.596-21"
 INSERT INTO person (per_name, per_cpf) VALUES ("Vanessa Aparecida Abreu e Silva Melo", "111.111.111-11");
 INSERT INTO person_address (per_code, add_code) VALUES (1, 1);
 INSERT INTO person_address (per_code, add_code) VALUES (2, 1);
-INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)
-          VALUES ("cmdrlias", "cmdrlias@gmail.com", "$2a$10$2XmoryKEpL8jrfy2anY4Wun.TseVwq8Dnxf/.xb5sUen5gFv0nJrO", 1, 1);
-INSERT INTO user (usr_name, usr_email, usr_password, ust_code, per_code)
-          VALUES ("vanessa", "vanessasilvamelo@hotmail.com", "$2a$10$ih/YGdjBNtlEkGcivO4y8ewg72mhk1SH6zWu9K4cERSSBAgAamOLi", 1, 2);
+INSERT INTO user (usr_name, usr_email, usr_password, ust_code)
+          VALUES ("cmdrlias", "cmdrlias@gmail.com", "$2a$10$2XmoryKEpL8jrfy2anY4Wun.TseVwq8Dnxf/.xb5sUen5gFv0nJrO", 1);
+INSERT INTO user (usr_name, usr_email, usr_password, ust_code)
+          VALUES ("vanessa", "vanessasilvamelo@hotmail.com", "$2a$10$ih/YGdjBNtlEkGcivO4y8ewg72mhk1SH6zWu9K4cERSSBAgAamOLi", 1);
 INSERT INTO phone (pho_number, pho_area_code) VALUES (992498172, 31);
 INSERT INTO phone (pho_number, pho_area_code) VALUES (33333333, 31);
 INSERT INTO person_phone (per_code, pho_code) VALUES (1, 1);

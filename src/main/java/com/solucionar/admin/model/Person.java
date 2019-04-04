@@ -24,7 +24,7 @@ public class Person implements Serializable {
     @Column(name="per_cpf")
     private String perCpf;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name="person_address",
             joinColumns={@JoinColumn(name="per_code")},
             inverseJoinColumns={@JoinColumn(name="add_code")})
