@@ -1,42 +1,42 @@
 create table user_type(
-  ust_code			      INT NOT NULL AUTO_INCREMENT,
-  ust_description		  VARCHAR(40) NOT NULL,
+  ust_code			        INT NOT NULL AUTO_INCREMENT,
+  ust_description		    VARCHAR(40) NOT NULL,
   PRIMARY KEY (ust_code)
 );
 
 create table address(
-    add_code			      INT NOT NULL AUTO_INCREMENT,
-    add_street          VARCHAR(100) not null,
-    add_number          VARCHAR(10),
-    add_complement      VARCHAR(50),
-    add_neighborhood    VARCHAR(50) not null,
-    add_city            VARCHAR(50) not null,
-    add_state           VARCHAR(50) not null,
-    add_country         VARCHAR(50) not null,
-    add_zip_code        VARCHAR(20) not null,
+    add_code			    INT NOT NULL AUTO_INCREMENT,
+    add_street              VARCHAR(100) not null,
+    add_number              VARCHAR(10),
+    add_complement          VARCHAR(50),
+    add_neighborhood        VARCHAR(50) not null,
+    add_city                VARCHAR(50) not null,
+    add_state               VARCHAR(50) not null,
+    add_country             VARCHAR(50) not null,
+    add_zip_code            VARCHAR(20) not null,
     PRIMARY KEY (add_code)
 );
 
 create table phone(
   pho_code			        INT NOT NULL AUTO_INCREMENT,
-  pho_number			      INT,
-  pho_area_code		      SMALLINT,
+  pho_number			    INT,
+  pho_area_code		        SMALLINT,
   PRIMARY KEY(pho_code)
 );
 
 create table person(
    per_code 			    INT NOT NULL AUTO_INCREMENT,
-   per_name			      VARCHAR(100) NOT NULL,
+   per_name			        VARCHAR(100) NOT NULL,
    per_cpf				    VARCHAR(14) NOT NULL,
    PRIMARY KEY (per_code)
 
 );
 create table person_phone(
-   per_code			      INT NOT NULL,
-   pho_code			      INT NOT NULL,
+   per_code			        INT NOT NULL,
+   pho_code			        INT NOT NULL,
    PRIMARY KEY (per_code, pho_code),
-   FOREIGN KEY (per_code) REFERENCES person(per_code),
-   FOREIGN KEY (pho_code) REFERENCES phone(pho_code)
+   FOREIGN KEY (per_code)   REFERENCES person(per_code),
+   FOREIGN KEY (pho_code)   REFERENCES phone(pho_code)
 );
 
 create table person_address(

@@ -19,5 +19,9 @@ public interface WebURIs {
             "/users/list",
             "/users/add",
             "/users/save",
+            "/companies",
+            "/companies/list",
+            "/companies/add",
+            "/companies/save"
     };
 }

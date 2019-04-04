@@ -21,7 +21,8 @@ public class MvcConfig implements WebMvcConfigurer {
         messageSource.setBasenames("classpath:/messages/messages",
                                    "classpath:/messages/login-messages",
                                    "classpath:/messages/dashboard-messages",
-                                   "classpath:/messages/user-messages");
+                                   "classpath:/messages/user-messages",
+                                   "classpath:/messages/company-messages");
         messageSource.setFallbackToSystemLocale(false);
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setCacheSeconds(5);

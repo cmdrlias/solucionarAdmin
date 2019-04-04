@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/principal-fragment}">
+<div class="content" layout:fragment="content">
+    <div class="col-6 col-md" th:each="c : ${companies}">
+        <div class="card">
+            <div class="card-header">
+                <a href="" class="float-right" th:title="#{label.icon.title.delete}">
+                    <i class="fas fa-trash-alt fa-custom"></i>
+                </a>
+                <a href="" class="float-right mr-3" th:title="#{label.icon.title.edit}">
+                    <i class="fas fa-edit fa-custom"></i>
+                </a>
+                <h6 class="card-title">[[${u.getPerson().perName}]]</h6>
+                <small>[[${u.getUsrType().ustDescription}]]</small>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>[[#{label.users.username}]]</td>
+                        <td>[[${u.usrName}]]</td>
+                    </tr>
+                    <tr>
+                        <td>[[#{label.users.phone}]]</td>
+                        <td>[[${u.getPerson().getPhones().get(0).getPhoneString()}]]</td>
+                    </tr>
+                    <tr>
+                        <td>[[#{label.users.email}]]</td>
+                        <td>[[${u.usrEmail}]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/users/add}" class="btn btn-lg btn-primary btn-fab btn-icon btn-round floating-add">
+        <i class="nc-icon nc-simple-add"></i>
+    </a>
+</div>
+<script layout:fragment="javascript">
+    $(document).ready(function() {
+        loadDataTable();
+    });
+</script>
+</html>
