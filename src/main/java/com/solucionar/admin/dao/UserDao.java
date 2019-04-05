@@ -13,6 +13,6 @@ public interface UserDao extends JpaRepository<User, Integer> {
 
     User findByUsrName(String usrName);
 
-    @Query("select u from User u")
+    @Query("select u from User u ORDER BY usrName")
     List<User> findAll();
 }
