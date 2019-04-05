@@ -31,10 +31,10 @@ public class Company  implements Serializable {
     private String cmpInscricaoMunicipal;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name="set_company_representative",
+    @JoinTable(name="company_representative",
             joinColumns={@JoinColumn(name="cmp_code")},
-            inverseJoinColumns={@JoinColumn(name="cpr_code")})
-    private Person person;
+            inverseJoinColumns={@JoinColumn(name="rep_code")})
+    private Representative representative;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="company_phone",
@@ -90,14 +90,6 @@ public class Company  implements Serializable {
         this.cmpInscricaoMunicipal = cmpInscricaoMunicipal;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
     public List<Phone> getPhones() {
         return phones;
     }
@@ -112,5 +104,13 @@ public class Company  implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Representative getRepresentative() {
+        return representative;
+    }
+
+    public void setRepresentative(Representative representative) {
+        this.representative = representative;
     }
 }

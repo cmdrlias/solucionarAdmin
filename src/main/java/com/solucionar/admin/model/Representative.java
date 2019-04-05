@@ -2,50 +2,49 @@ package com.solucionar.admin.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name="representative")
 public class Representative implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    @Column(name="cpr_code")
-    private int cprCode;
+    @Column(name="rep_code")
+    private int repCode;
 
-    @Column(name="cpr_name")
-    private String cprName;
+    @Column(name="rep_name")
+    private String repName;
 
-    @Column(name="cpr_email")
-    private String cprEmail;
+    @Column(name="rep_email")
+    private String repEmail;
 
     public Representative() { }
 
-    public int getCprCode() {
-        return cprCode;
+    public int getRepCode() {
+        return repCode;
     }
 
-    public void setCprCode(int cprCode) {
-        this.cprCode = cprCode;
+    public void setRepCode(int repCode) {
+        this.repCode = repCode;
     }
 
-    public String getCprName() {
-        return cprName;
+    public String getRepName() {
+        return repName;
     }
 
-    public void setCprName(String cprName) {
-        this.cprName = cprName;
+    public void setRepName(String cprName) {
+        this.repName = repName;
     }
 
-    public String getCprEmail() {
-        return cprEmail;
+    public String getRepEmail() {
+        return repEmail;
     }
 
-    public void setCprEmail(String cprEmail) {
-        this.cprEmail = cprEmail;
+    public void setRepEmail(String repEmail) {
+        this.repEmail = repEmail;
     }
 }

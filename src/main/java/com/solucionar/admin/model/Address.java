@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="address")
-@NamedQuery(name="Address.findAll", query="SELECT a FROM Address a")
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -113,5 +112,9 @@ public class Address implements Serializable {
 
     public void setAddZipCode(String addZipCode) {
         this.addZipCode = addZipCode;
+    }
+
+    public String getAddressString() {
+        return addStreet + ", " + addNumber + ", " + addNeighborhood + " - " + addZipCode + ", " + addCity + " / " + addState;
     }
 }

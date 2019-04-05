@@ -12,23 +12,34 @@
                 <a href="" class="float-right mr-3" th:title="#{label.icon.title.edit}">
                     <i class="fas fa-edit fa-custom"></i>
                 </a>
-                <h6 class="card-title">[[${u.getPerson().perName}]]</h6>
-                <small>[[${u.getUsrType().ustDescription}]]</small>
+                <h6 class="card-title">[[${c.cmpName}]]</h6>
             </div>
             <div class="card-body">
                 <table class="table">
                     <tbody>
                     <tr>
-                        <td>[[#{label.users.username}]]</td>
-                        <td>[[${u.usrName}]]</td>
+                        <td>[[#{label.companies.social.name}]]</td>
+                        <td>[[${c.cmpSocialName}]]</td>
                     </tr>
                     <tr>
-                        <td>[[#{label.users.phone}]]</td>
-                        <td>[[${u.getPerson().getPhones().get(0).getPhoneString()}]]</td>
+                        <td>[[#{label.companies.insc.estadual}]]</td>
+                        <td>[[${c.cmpInscricaoEstadual}]]</td>
                     </tr>
                     <tr>
-                        <td>[[#{label.users.email}]]</td>
-                        <td>[[${u.usrEmail}]]</td>
+                        <td>[[#{label.companies.insc.municipal}]]</td>
+                        <td>[[${c.cmpInscricaoMunicipal}]]</td>
+                    </tr>
+                    <tr>
+                        <td>[[#{label.companies.representative}]]</td>
+                        <td>[[${c.getRepresentative().repName}]]</td>
+                    </tr>
+                    <tr>
+                        <td>[[#{label.companies.phone}]]</td>
+                        <td>[[${c.phones.get(0).getPhoneString()}]]</td>
+                    </tr>
+                    <tr>
+                        <td>[[#{label.companies.address}]]</td>
+                        <td>[[${c.getAddress().getAddressString()}]]</td>
                     </tr>
                     </tbody>
                 </table>
