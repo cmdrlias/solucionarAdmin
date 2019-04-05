@@ -36,7 +36,7 @@ public class Representative implements Serializable {
         return repName;
     }
 
-    public void setRepName(String cprName) {
+    public void setRepName(String repName) {
         this.repName = repName;
     }
 

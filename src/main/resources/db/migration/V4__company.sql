@@ -32,7 +32,7 @@ create table company_address (
     PRIMARY KEY (cmp_code, add_code)
 );
 
-INSERT INTO representative (rep_name, rep_email) VALUES ("Oziel Fernando", "oziel@solucionarmanutencoes.com.br");
+INSERT INTO representative (rep_name, rep_email) VALUES ("Vanessa Aparecida Abreu e Silva Melo", "vanessa@solucionarmanutencoes.com.br");
 INSERT INTO company (cmp_name, cmp_social_name, cmp_insc_estadual, cmp_insc_municipal)
             VALUES  ("Solucionar Manutenções", "Solucionar Manutenções", "214.010.439/4717", "0.000.000-0");
 INSERT INTO company_representative VALUES (1, 1);
