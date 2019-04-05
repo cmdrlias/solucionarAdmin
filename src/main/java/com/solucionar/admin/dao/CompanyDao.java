@@ -10,6 +10,6 @@ import java.util.List;
 public interface CompanyDao extends JpaRepository<Company, Integer> {
     Company findByCmpCode(int cmpCode);
 
-    @Query("select c from Company c")
+    @Query("select c from Company c ORDER BY cmpName")
     List<Company> findAll();
 }
