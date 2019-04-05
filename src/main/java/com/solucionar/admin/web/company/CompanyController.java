@@ -67,7 +67,7 @@ public class CompanyController extends BaseController {
         Company company = new Company();
 
         company.setCmpName(cmpName);
-        company.setCmpSocialName(cmpName);
+        company.setCmpSocialName(cmpSocialName);
         company.setCmpInscricaoEstadual(cmpInscEstadual);
         company.setCmpInscricaoMunicipal(cmpInscMunicipal);
 
