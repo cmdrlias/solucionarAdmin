@@ -1,6 +1,6 @@
 create table company (
-  cmp_code             INT NOT NULL AUTO_INCREMENT,
-	cmp_name             VARCHAR(100) NOT NULL,
+    cmp_code             INT NOT NULL AUTO_INCREMENT,
+	cmp_name             VARCHAR(100),
 	cmp_social_name      VARCHAR(100) NOT NULL,
 	cmp_insc_estadual    VARCHAR(16),
 	cmp_insc_municipal   VARCHAR(16),

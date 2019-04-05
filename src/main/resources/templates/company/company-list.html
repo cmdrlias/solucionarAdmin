@@ -34,11 +34,11 @@
                         <td>[[${c.getRepresentative().repName}]]</td>
                     </tr>
                     <tr>
-                        <td>[[#{label.companies.phone}]]</td>
+                        <td>[[#{label.companies.phone}]] [[#{label.companies.principal}]]</td>
                         <td>[[${c.phones.get(0).getPhoneString()}]]</td>
                     </tr>
                     <tr>
-                        <td>[[#{label.companies.address}]]</td>
+                        <td>[[#{label.companies.address}]] [[#{label.companies.principal}]]</td>
                         <td>[[${c.getAddress().getAddressString()}]]</td>
                     </tr>
                     </tbody>
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    <a th:href="@{/users/add}" class="btn btn-lg btn-primary btn-fab btn-icon btn-round floating-add">
+    <a th:href="@{/companies/add}" class="btn btn-lg btn-primary btn-fab btn-icon btn-round floating-add">
         <i class="nc-icon nc-simple-add"></i>
     </a>
 </div>

@@ -6,51 +6,42 @@
         <div class="col-xl">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">[[#{message.users.add}]] <i class="pe-7s-add-user float-right mr-1"></i></h4>
+                    <h4 class="card-title">[[#{message.companies.add}]] <i class="pe-7s-add-user float-right mr-1"></i></h4>
                 </div>
-                <form id="form1" th:action="@{/users/save}" method="post">
+                <form th:action="@{/companies/save}" method="post">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group has-label">
-                                    <label>[[#{label.users.name}]] *</label>
-                                    <input class="form-control" type="text" name="name" required />
+                                    <label>[[#{label.companies.name}]] </label>
+                                    <input class="form-control" type="text" name="name" />
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="form-group has-label">
-                                    <label>[[#{label.users.username}]] *</label>
-                                    <input class="form-control" type="text" name="username" required />
+                                    <label>[[#{label.companies.social.name}]] *</label>
+                                    <input class="form-control" type="text" name="socialName" required />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group has-label">
-                                    <label>[[#{label.users.email}]]</label>
-                                    <input class="form-control" type="email" name="email" />
+                                    <label>[[#{label.companies.insc.estadual}]]</label>
+                                    <input class="form-control" type="text" name="inscEstadual" />
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="form-group has-label">
-                                    <label>[[#{label.users.cpf}]] *</label>
-                                    <input class="form-control" type="text" name="cpf" required />
-                                </div>
-                            </div>
-                            <div class="col-sm" id="userType">
-                                <div class="form-group has-label">
-                                    <label>[[#{label.users.type}]]</label>
-                                    <select class="form-control" name="type" required>
-                                        <option th:text="#{label.option.select}" selected></option>
-                                        <option th:text="#{system.role.system.admin}"></option>
-                                    </select>
+                                    <label>[[#{label.companies.insc.municipal}]]</label>
+                                    <input class="form-control" type="text" name="inscMunicipal" />
                                 </div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm typography-line">
-                                <p>[[#{label.users.phones}]]</p>
+                                <p>[[#{label.companies.phones}]]</p>
                             </div>
                         </div>
                         <div class="row">
@@ -82,7 +73,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm typography-line">
-                                <p>[[#{label.users.address}]]</p>
+                                <p>[[#{label.companies.address}]]</p>
                             </div>
                         </div>
                         <div class="row">
@@ -131,19 +122,33 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm typography-line">
+                                <p>[[#{label.companies.representative}]]</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.companies.representative.name}]] </label>
+                                    <input class="form-control" type="text" name="repName" required />
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group has-label">
+                                    <label>[[#{label.companies.representative.email}]] </label>
+                                    <input class="form-control" type="email" name="repEmail" required />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary float-right mb-4 ml-4">Salvar</button>
-                        <a th:href="@{/users/list}" class="btn btn-secondary float-right mb-4">Cancelar</a>
+                        <a th:href="@{/companies/list}" class="btn btn-secondary float-right mb-4">Cancelar</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <script layout:fragment="javascript">
-        $(document).ready(function() {
-            setFormValidation('#form1');
-            addZipCodeLoadingService();
-        });
-    </script>
 </html>
