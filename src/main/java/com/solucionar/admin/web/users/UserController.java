@@ -1,6 +1,8 @@
 package com.solucionar.admin.web.users;
 
+import com.mysql.cj.Session;
 import com.solucionar.admin.model.*;
+import com.solucionar.admin.service.LogService;
 import com.solucionar.admin.service.UserService;
 import com.solucionar.admin.values.UserTypeEnum;
 import com.solucionar.admin.web.BaseController;
@@ -12,12 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @RequestMapping("/users")
@@ -27,6 +29,9 @@ public class UserController extends BaseController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private LogService logService;
 
     @RequestMapping(value = { "/list" })
     public String list(Model model) {
@@ -118,10 +123,53 @@ public class UserController extends BaseController {
 
         userService.add(user);
 
+        Log log = new Log();
+        log.setLogDescription("USUÁRIO " + usrName + "(" + perName + ") CADASTRADO NO SISTEMA");
+        logService.add(log);
+
         setModalSuccess(getMessage("message.users.success.add") + usrPassword, model);
 
         configure(model);
         return list(model);
+    }
+
+    @RequestMapping(value={"/profile"})
+    public String profile(Model model, HttpSession session) {
+        final User user = getLoggedUser(session);
+
+        model.addAttribute("user", user);
+
+        configure(model);
+        return "user/user-profile";
+    }
+
+    @RequestMapping(value={"/update"})
+    public String update(@RequestParam(value="id", required=true) Integer usrCode, Model model, HttpServletRequest request, HttpSession session) {
+        String usrPassword = request.getParameter("password");
+
+        User user = userService.findByUsrCode(usrCode);
+
+        user.setUsrPassword(passwordEncoder.encode(usrPassword));
+
+        userService.update(user);
+
+        setModalSuccess(getMessage("message.users.success.edit"), model);
+
+        return profile(model, session);
+    }
+
+    @RequestMapping(value = { "/delete" })
+    public String delete(@RequestParam(value="id", required=true) Integer usrCode, HttpServletRequest request, Model model) {
+
+        // TODO
+        // DELETE BY CHANGING THE USER STATUS
+
+        return list(model);
+    }
+
+    @Override
+    protected User getLoggedUser(HttpSession session) {
+        return super.getLoggedUser(session);
     }
 
     private void configure(Model model) {

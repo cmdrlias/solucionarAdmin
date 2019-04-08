@@ -23,4 +23,6 @@ public interface UserService {
 
     User findByUsrName(String usrName);
 
+    long count();
+
 }

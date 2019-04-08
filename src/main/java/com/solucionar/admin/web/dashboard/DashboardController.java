@@ -1,6 +1,9 @@
 package com.solucionar.admin.web.dashboard;
 
+import com.solucionar.admin.model.Log;
 import com.solucionar.admin.model.News;
+import com.solucionar.admin.service.CompanyService;
+import com.solucionar.admin.service.LogService;
 import com.solucionar.admin.service.NewsService;
 import com.solucionar.admin.service.UserService;
 import com.solucionar.admin.web.BaseController;
@@ -24,10 +27,21 @@ public class DashboardController extends BaseController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CompanyService companyService;
+
+    @Autowired
+    private LogService logService;
+
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public String index(HttpSession session, Model model) {
         List<News> news = newsService.findAll();
 
+        List<Log> log = logService.findAll();
+
+        model.addAttribute("log", log);
+        model.addAttribute("companyCount", companyService.count());
+        model.addAttribute("userCount", userService.count());
         model.addAttribute("news", news);
         model.addAttribute("dashboardSection", Boolean.TRUE);
         model.addAttribute("pageTitle", "Dashboard");

@@ -12,4 +12,7 @@ public interface CompanyDao extends JpaRepository<Company, Integer> {
 
     @Query("select c from Company c ORDER BY cmpName")
     List<Company> findAll();
+
+    @Query("select count(c) from Company c")
+    long countActive();
 }

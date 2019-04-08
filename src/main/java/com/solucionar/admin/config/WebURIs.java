@@ -19,9 +19,13 @@ public interface WebURIs {
             "/users/list",
             "/users/add",
             "/users/save",
+            "/users/profile",
+            "/users/update",
+            "/users/delete",
             "/companies",
             "/companies/list",
             "/companies/add",
-            "/companies/save"
+            "/companies/save",
+            "/companies/delete"
     };
 }

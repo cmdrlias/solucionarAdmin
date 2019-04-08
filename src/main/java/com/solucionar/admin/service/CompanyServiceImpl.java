@@ -37,4 +37,12 @@ public class CompanyServiceImpl extends BaseService implements CompanyService {
     public void update(Company company) {
         companyDao.save(company);
     }
+
+    @Override
+    public void delete(Company company) { companyDao.delete(company); }
+
+    @Override
+    public long count() {
+        return companyDao.countActive();
+    }
 }

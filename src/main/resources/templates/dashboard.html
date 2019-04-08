@@ -16,7 +16,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">[[#{message.dashboard.active.users}]]</p>
-                                    <p class="card-title">2<p>
+                                    <p class="card-title">[[${userCount}]]<p>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category">[[#{message.dashboard.active.clients}]]</p>
-                                    <p class="card-title">0<p>
+                                    <p class="card-title">[[${companyCount}]]<p>
                                 </div>
                             </div>
                         </div>
@@ -151,19 +151,37 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xl col-lg">
+                <div class="card">
+                    <div class="card-header ">
+                        <h4 class="card-title">[[#{message.dashboard.log}]] <i class="pe-7s-news-paper float-right"></i></h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" th:each="l, iterStat : ${log}" th:if="${iterStat.index} < 5">
+                            <div class="col-sm">
+                                <blockquote>
+                                    <p>[[${l.getLogString()}]]</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-<script layout:fragment="javascript">
-    $(document).ready(function() {
-        $('#btnNovo').click(function() {
-            $('#btnsForm').show();
-            $('#btnNoForm').hide();
-            $('#newsForm').show();
+    <script layout:fragment="javascript">
+        $(document).ready(function() {
+            $('#btnNovo').click(function() {
+                $('#btnsForm').show();
+                $('#btnNoForm').hide();
+                $('#newsForm').show();
+            });
+            $('#btnCancelar').click(function() {
+                $('#btnsForm').hide();
+                $('#btnNoForm').show();
+                $('#newsForm').hide();
+            });
         });
-        $('#btnCancelar').click(function() {
-            $('#btnsForm').hide();
-            $('#btnNoForm').show();
-            $('#newsForm').hide();
-        });
-    });
-</script>
+    </script>
 </html>

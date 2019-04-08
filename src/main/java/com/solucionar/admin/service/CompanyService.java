@@ -13,4 +13,8 @@ public interface CompanyService {
     void add(Company company);
 
     void update(Company company);
+
+    void delete(Company company);
+
+    long count();
 }

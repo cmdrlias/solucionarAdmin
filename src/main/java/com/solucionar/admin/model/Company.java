@@ -30,11 +30,11 @@ public class Company  implements Serializable {
     @Column(name="cmp_insc_municipal")
     private String cmpInscricaoMunicipal;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="company_representative",
             joinColumns={@JoinColumn(name="cmp_code")},
             inverseJoinColumns={@JoinColumn(name="rep_code")})
-    private Representative representative;
+    private List<Representative> representatives;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="company_phone",
@@ -42,11 +42,11 @@ public class Company  implements Serializable {
             inverseJoinColumns={@JoinColumn(name="pho_code")})
     private List<Phone> phones;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="company_address",
             joinColumns={@JoinColumn(name="cmp_code")},
             inverseJoinColumns={@JoinColumn(name="add_code")})
-    private Address address;
+    private List<Address> addresses;
 
     public Company() { }
 
@@ -98,19 +98,19 @@ public class Company  implements Serializable {
         this.phones = phones;
     }
 
-    public Address getAddress() {
-        return address;
+    public List<Representative> getRepresentatives() {
+        return representatives;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setRepresentatives(List<Representative> representatives) {
+        this.representatives = representatives;
     }
 
-    public Representative getRepresentative() {
-        return representative;
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setRepresentative(Representative representative) {
-        this.representative = representative;
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

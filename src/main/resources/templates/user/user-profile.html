@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/principal-fragment}">
+    <div class="content row" layout:fragment="content">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="/images/bg/bruno-abatti.jpg" alt="...">
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            <img class="avatar border-white" src="/images/faces/miley-eyes.png" alt="...">
+                            <h4 class="title">[[${user.getPerson().perName}]]<br>
+                                <a href="#"><small>@[[${user.usrName}]]</small></a>
+                            </h4>
+                        </div>
+                        <hr>
+                        <p class="description text-center">
+                            [[${user.usrEmail}]]
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="card-title">[[#{message.users.edit}]]</h6>
+                    </div>
+                    <form id="form1" th:action="@{/users/update(id=${user.usrCode})}" method="post">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-group has-label">
+                                        <label>[[#{label.users.password}]]</label>
+                                        <input class="form-control" type="password" name="password" id="password" required />
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="form-group has-label">
+                                        <label>[[#{label.users.password.repeat}]]</label>
+                                        <input class="form-control" type="password" name="password2" id="password2" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary float-right mb-4 ml-4">Salvar</button>
+                            <a th:href="@{/users/profile}" class="btn btn-secondary float-right mb-4">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var password = document.getElementById("password")
+            , confirm_password = document.getElementById("password2");
+
+        function validatePassword(){
+            if(password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+    </script>
+</html>

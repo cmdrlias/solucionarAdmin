@@ -6,7 +6,7 @@
     <div class="col-6 col-md" th:each="c : ${companies}">
         <div class="card">
             <div class="card-header">
-                <a href="" class="float-right" th:title="#{label.icon.title.delete}">
+                <a th:href="@{/companies/delete(id=${c.cmpCode})}" class="float-right" th:title="#{label.icon.title.delete}">
                     <i class="fas fa-trash-alt fa-custom"></i>
                 </a>
                 <a href="" class="float-right mr-3" th:title="#{label.icon.title.edit}">
@@ -31,7 +31,7 @@
                     </tr>
                     <tr>
                         <td>[[#{label.companies.representative}]]</td>
-                        <td>[[${c.getRepresentative().repName}]]</td>
+                        <td>[[${c.representatives.get(0).repName}]]</td>
                     </tr>
                     <tr>
                         <td>[[#{label.companies.phone}]] [[#{label.companies.principal}]]</td>
@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td>[[#{label.companies.address}]] [[#{label.companies.principal}]]</td>
-                        <td>[[${c.getAddress().getAddressString()}]]</td>
+                        <td>[[${c.addresses.get(0).getAddressString()}]]</td>
                     </tr>
                     </tbody>
                 </table>

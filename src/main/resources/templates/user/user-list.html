@@ -6,7 +6,7 @@
         <div class="col-6 col-md-6" th:each="u : ${users}">
             <div class="card">
                 <div class="card-header">
-                    <a href="" class="float-right" th:title="#{label.icon.title.delete}">
+                    <a th:href="@{/users/delete(id=${u.usrCode})}" class="float-right" th:title="#{label.icon.title.delete}">
                         <i class="fas fa-trash-alt fa-custom"></i>
                     </a>
                     <a href="" class="float-right mr-3" th:title="#{label.icon.title.edit}">

@@ -1,5 +1,6 @@
 package com.solucionar.admin.service;
 
+import com.solucionar.admin.dao.NewsDao;
 import com.solucionar.admin.dao.UserDao;
 import com.solucionar.admin.dao.UserTypeDao;
 import com.solucionar.admin.model.User;
@@ -19,6 +20,12 @@ public class UserServiceImpl extends BaseService implements UserService {
 
     @Autowired
     private UserTypeDao userTypeDao;
+
+    @Autowired
+    private NewsDao newsDao;
+
+    @Autowired
+    private NewsService newsService;
 
     @Value("${system.web.address}")
     private String systemWebAddress;
@@ -61,5 +68,10 @@ public class UserServiceImpl extends BaseService implements UserService {
     @Override
     public void update(User user) {
         userDao.save(user);
+    }
+
+    @Override
+    public long count() {
+        return userDao.countActive();
     }
 }

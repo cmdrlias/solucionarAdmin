@@ -9,6 +9,11 @@ import java.util.List;
 public interface NewsDao extends JpaRepository<News, Integer> {
     News findByNwsCode(int nwsCode);
 
+    @Query("select n from News n where n.user = :#{#User.usrCode}")
+    List<News> findNewsByUsrCode(int usrCode);
+
     @Query("select n from News n ORDER BY nwsCode DESC")
     List<News> findAll();
+
+    void delete(News news);
 }

@@ -15,4 +15,7 @@ public interface UserDao extends JpaRepository<User, Integer> {
 
     @Query("select u from User u ORDER BY usrName")
     List<User> findAll();
+
+    @Query("select count(u) from User u")
+    long countActive();
 }

@@ -44,7 +44,7 @@
                                 <p>[[#{label.companies.phones}]]</p>
                             </div>
                             <div class="col-sm">
-                                <button type="button" onClick="addPhoneField()" class="btn btn-sm btn-primary btn-fab btn-icon btn-round float-right">
+                                <button type="button" onClick="addPhoneField()" th:onclick="countPhone + 1" class="btn btn-sm btn-primary btn-fab btn-icon btn-round float-right">
                                     <i class="nc-icon nc-simple-add"></i>
                                 </button>
                             </div>
@@ -90,19 +90,19 @@
                             <div class="col-sm-3">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.zip.code}]] *</label>
-                                    <input class="form-control" type="text" name="zipCode" id="zipCode" number="true" maxlength="8" required />
+                                    <input class="form-control" type="text" name="zipCode1" id="zipCode" number="true" maxlength="8" required />
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.street}]] *</label>
-                                    <input class="form-control" type="text" name="street" id="street" required/>
+                                    <input class="form-control" type="text" name="street1" id="street" required/>
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.neighborhood}]] *</label>
-                                    <input class="form-control" type="text" name="neighborhood" id="neighborhood" required/>
+                                    <input class="form-control" type="text" name="neighborhood1" id="neighborhood" required/>
                                 </div>
                             </div>
                         </div>
@@ -110,25 +110,25 @@
                             <div class="col-sm-3">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.number}]] *</label>
-                                    <input class="form-control" type="text" name="number" id="number" required/>
+                                    <input class="form-control" type="text" name="number1" id="number" required/>
                                 </div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.complement}]]</label>
-                                    <input class="form-control" type="text" name="complement" id="complement" />
+                                    <input class="form-control" type="text" name="complement1" id="complement" />
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.city}]] *</label>
-                                    <input class="form-control" type="text" name="city" id="city" required/>
+                                    <input class="form-control" type="text" name="city1" id="city" required/>
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="form-group has-label">
                                     <label>[[#{label.address.state}]] *</label>
-                                    <input class="form-control" type="text" name="state" id="state" required/>
+                                    <input class="form-control" type="text" name="state1" id="state" required/>
                                 </div>
                             </div>
                         </div>
@@ -147,13 +147,13 @@
                             <div class="col-sm">
                                 <div class="form-group has-label">
                                     <label>[[#{label.companies.representative.name}]] </label>
-                                    <input class="form-control" type="text" name="repName" required />
+                                    <input class="form-control" type="text" name="repName1" required />
                                 </div>
                             </div>
                             <div class="col-sm">
                                 <div class="form-group has-label">
                                     <label>[[#{label.companies.representative.email}]] </label>
-                                    <input class="form-control" type="email" name="repEmail" required />
+                                    <input class="form-control" type="email" name="repEmail1" required />
                                 </div>
                             </div>
                         </div>

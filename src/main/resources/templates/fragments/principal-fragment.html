@@ -64,6 +64,12 @@
             <div class="collapse" id="collapseExample">
               <ul class="nav">
                 <li>
+                  <a th:href="@{/users/profile}">
+                    <span class="sidebar-mini-icon"><i class="fas fa-eye"></i></span>
+                    <span class="sidebar-normal">[[#{label.system.menu.profile}]]</span>
+                  </a>
+                </li>
+                <li>
                   <a th:href="@{/logout}">
                     <span class="sidebar-mini-icon"><i class="fas fa-sign-out-alt"></i></span>
                     <span class="sidebar-normal">[[#{label.system.menu.logout}]]</span>
