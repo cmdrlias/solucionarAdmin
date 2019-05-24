@@ -161,8 +161,15 @@ public class UserController extends BaseController {
     @RequestMapping(value = { "/delete" })
     public String delete(@RequestParam(value="id", required=true) Integer usrCode, HttpServletRequest request, Model model) {
 
-        // TODO
-        // DELETE BY CHANGING THE USER STATUS
+        User user = userService.findByUsrCode(usrCode);
+
+        Log log = new Log();
+        log.setLogDescription("USUÁRIO " + user.getUsrName() + "(" + user.getPerson().getPerName() + ") DELETADO DO SISTEMA");
+        logService.add(log);
+
+        userService.delete(userService.findByUsrCode(usrCode));
+
+        setModalSuccess(getMessage("message.users.success.delete"), model);
 
         return list(model);
     }

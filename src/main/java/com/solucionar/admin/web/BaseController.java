@@ -1,7 +1,6 @@
 package com.solucionar.admin.web;
 
 import com.solucionar.admin.model.User;
-import com.solucionar.admin.service.LogService;
 import com.solucionar.admin.service.UserService;
 import com.solucionar.admin.values.UserTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,10 @@
-create table user_type(
+create table user_type (
   ust_code			        INT NOT NULL AUTO_INCREMENT,
   ust_description		    VARCHAR(40) NOT NULL,
   PRIMARY KEY (ust_code)
 );
 
-create table address(
+create table address (
     add_code			    INT NOT NULL AUTO_INCREMENT,
     add_street              VARCHAR(100) not null,
     add_number              VARCHAR(10),
@@ -17,21 +17,21 @@ create table address(
     PRIMARY KEY (add_code)
 );
 
-create table phone(
+create table phone (
   pho_code			        INT NOT NULL AUTO_INCREMENT,
   pho_number			    INT,
   pho_area_code		        SMALLINT,
   PRIMARY KEY(pho_code)
 );
 
-create table person(
+create table person (
    per_code 			    INT NOT NULL AUTO_INCREMENT,
    per_name			        VARCHAR(100) NOT NULL,
    per_cpf				    VARCHAR(14) NOT NULL,
    PRIMARY KEY (per_code)
 
 );
-create table person_phone(
+create table person_phone (
    per_code			        INT NOT NULL,
    pho_code			        INT NOT NULL,
    PRIMARY KEY (per_code, pho_code),
@@ -39,17 +39,13 @@ create table person_phone(
    FOREIGN KEY (pho_code)   REFERENCES phone(pho_code)
 );
 
-create table person_address(
+create table person_address (
     per_code          INT NOT NULL,
     add_code          INT NOT NULL,
     PRIMARY KEY (per_code, add_code),
     FOREIGN KEY (per_code) REFERENCES person(per_code),
     FOREIGN KEY (add_code) REFERENCES address(add_code)
 );
-
-# TODO
-# fix user type and person by creating a connecting table (not using foreign keys)
-# use person_address and person_phone as examples
 
 create table user (
   usr_code             INT NOT NULL AUTO_INCREMENT,
@@ -68,7 +64,7 @@ create table set_user_type (
     FOREIGN KEY (ust_code) REFERENCES user_type(ust_code)
 );
 
-create table person_user(
+create table person_user (
     usr_code         INT NOT NULL,
     per_code         INT NOT NULL,
     PRIMARY KEY (usr_code, per_code),
